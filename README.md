@@ -2,7 +2,7 @@
 Hi 👋 I am Hitesh, iOS Developer passionate about crafting intuitive and seamless native apps that prioritize simplicity and ease.<br>Currently working 💻 with  ![Xellier Network Solutions Private Limited](https://www.inxense.in/). I work on SwiftUI, UIKit and Swift. 
 
 # 👨🏽‍💻 Highlighted Projects:
-- ![NetflixClone](https://github.com/hiteshsuthar1410/NetflixClone)<br/>
+- <a href="https://github.com/hiteshsuthar1410/NetflixClone"> NetflixClone </a>
 
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/hitesh-suthar-03558215a/) 
