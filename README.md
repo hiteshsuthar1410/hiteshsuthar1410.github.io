@@ -1,5 +1,5 @@
 # 💫 About Me:
-Hi 👋 I am Hitesh, iOS Developer passionate about crafting intuitive and seamless native apps that prioritize simplicity and ease.<br>Currently working 💻 with  ![Xellier Network Solutions Private Limited](https://www.inxense.in/). I work on SwiftUI, UIKit and Swift.
+Hi 👋 I am Hitesh, iOS Developer passionate about crafting intuitive and seamless native apps that prioritize simplicity and ease.<br>Currently working 💻 with <a href="https://www.inxense.in/">Xellier Network Solutions Private Limited</a>. I work on SwiftUI, UIKit and Swift.
 
 # 📄 Resume:
 - <a href="https://drive.google.com/file/d/1sirKyPhMDzJcMl35bcuO0kwWbVVE6YXo/view?usp=sharing"> Resume </a>
