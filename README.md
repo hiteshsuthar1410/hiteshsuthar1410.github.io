@@ -1,5 +1,5 @@
 # 💫 About Me:
-Hi 👋 I am Hitesh, iOS Developer passionate about crafting intuitive and seamless native apps that prioritize simplicity and ease.<br>Currently working 💻 with <a href="https://www.linkedin.com/company/blueberry-fun/posts/?feedView=all">Blue Berry Fun Private Limited</a>. I work on SwiftUI, UIKit and Swift.
+Hi 👋 I am Hitesh, iOS Developer with 2+ years of experience. I am passionate about crafting intuitive and seamless native apps that prioritize simplicity and ease.<br>Currently working 💻 with <a href="https://www.linkedin.com/company/blueberry-fun/posts/?feedView=all">Blue Berry Fun Private Limited</a>. I work on SwiftUI, UIKit and Swift.
 
 # 📄 Resume:
 - <a href="https://drive.google.com/file/d/1sirKyPhMDzJcMl35bcuO0kwWbVVE6YXo/view?usp=sharing"> Resume </a>
