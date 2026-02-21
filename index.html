@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hitesh Suthar — iOS Developer</title>
-  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
+  <link rel="icon" type="image/jpeg" sizes="32x32" href="assets/images/profile.jpg">
+  <link rel="icon" type="image/jpeg" sizes="16x16" href="assets/images/profile.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/profile.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -956,20 +958,17 @@
     <p class="section-desc reveal">I believe the best apps feel invisible — they just work, beautifully. I focus on performance, accessibility, and craft in every line of Swift I write.</p>
 
     <div class="about-grid">
-      <div class="about-card reveal" style="text-align:center;">
+      <div class="about-card wide reveal" style="text-align:center;">
         <img src="assets/images/profile.jpg"
              alt="Hitesh Suthar"
-             style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin:0 auto 20px;display:block;box-shadow:var(--shadow-md);">
+             style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin:0 auto 24px;display:block;box-shadow:var(--shadow-md);">
 
-        <div class="card-title" style="font-size:16px;">Experience</div>
-        <div class="card-body">
+        <div class="card-title" style="font-size:16px;">Experience & Philosophy</div>
+        <div class="card-body" style="max-width:620px;margin:0 auto;">
           3.5 years of hands-on iOS development, from concept to App Store. Experienced in MVVM architecture, async/await, and Combine. Built and shipped multiple production apps used by real customers.
+          <br/><br/>
+          I believe great iOS apps aren’t just functional — they’re delightful. I care deeply about animation curves, haptic feedback, gesture feel, and layout precision. Apple’s Human Interface Guidelines aren’t a constraint — they’re a canvas.
         </div>
-      </div>
-      <div class="about-card reveal">
-        <div class="card-icon">🎯</div>
-        <div class="card-title">What I believe</div>
-        <div class="card-body">Great iOS apps aren't just functional — they're delightful. I care deeply about the small details: animation curves, haptic feedback, gesture feel, and layout precision. Apple's Human Interface Guidelines aren't a constraint, they're a canvas.</div>
       </div>
     </div>
   </section>
@@ -1422,6 +1421,7 @@
         // Icon will remain hidden if API fails
       }
     }
+
 
     // Load EDU Trax app icon on page load
     if (document.getElementById('eduTraxIcon')) {
