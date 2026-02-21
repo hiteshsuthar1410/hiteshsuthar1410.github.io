@@ -156,7 +156,15 @@
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, var(--accent) 0%, #00a3ff 100%);
+      background: linear-gradient(
+        120deg,
+        #0071e3,
+        #00a3ff,
+        #5ac8fa,
+        #0071e3
+      );
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -848,6 +856,12 @@
       50% { opacity: 1; }
     }
 
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -1142,33 +1156,70 @@
         </div>
       </div>
 
-      <a class="project-card reveal" href="https://github.com/hiteshsuthar1410/NetflixClone" target="_blank">
-        <div class="project-tag">💻 Open Source</div>
-        <div class="project-name">Netflix Clone</div>
-        <div class="project-desc">A fully native iOS Netflix clone built to mirror the real app experience — browsing, categories, video player, and smooth transitions. A deep dive into UIKit layout and API integration.</div>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-badge">Swift</span>
-            <span class="tech-badge">UIKit</span>
-            <span class="tech-badge">TMDB API</span>
-            <span class="tech-badge">AVKit</span>
-          </div>
-          <div class="project-arrow">↗</div>
-        </div>
-      </a>
+      <div class="project-card featured reveal">
+        <div class="project-tag">🧪 In Progress • Personal Project</div>
 
-      <a class="project-card reveal" href="#contact">
-        <div class="project-tag">💡 Open to collaborate</div>
-        <div class="project-name">Let's build together</div>
-        <div class="project-desc">Have an iOS idea you want to bring to life? I'm open to freelance collaborations and interesting open-source projects.</div>
+        <div class="project-header-with-icon">
+          <div class="project-header-content">
+            <div class="project-name">Minimal Clocks</div>
+            <div class="platform-badges">
+              <span class="platform-badge">📱 iOS</span>
+              <span class="platform-badge">🧩 Widgets</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-desc">
+          Minimal Clocks is a SwiftUI-first iOS app and widget suite that turns time, progress, and daily inspiration into minimalist, glanceable experiences. Built with WidgetKit, SwiftData, Core Location flows, Siri Intents, and real-world data integrations — wrapped in a polished, Apple-inspired design language.
+        </div>
+
+        <div class="project-screenshots">
+          <div class="screenshot-wrapper">
+            <img src="assets/images/login page.png" alt="Login Page" class="screenshot-ios" loading="lazy">
+          </div>
+
+          <div class="screenshot-wrapper">
+            <img src="assets/images/app homescreen.png" alt="Minimal Clocks Home Screen" class="screenshot-ios" loading="lazy">
+          </div>
+
+          <div class="screenshot-wrapper">
+            <img src="assets/images/backround selector.png" alt="Background Selector" class="screenshot-ios" loading="lazy">
+          </div>
+
+          <div class="screenshot-wrapper">
+            <img src="assets/images/iphone homescreen with widgets.png" alt="Minimal Clocks Widgets" class="screenshot-ios" loading="lazy">
+          </div>
+        </div>
+
         <div class="project-footer">
           <div class="project-tech">
-            <span class="tech-badge">iOS</span>
-            <span class="tech-badge">Swift</span>
+            <span class="tech-badge">SwiftUI</span>
+            <span class="tech-badge">WidgetKit</span>
+            <span class="tech-badge">SwiftData</span>
+            <span class="tech-badge">Core Location</span>
+            <span class="tech-badge">Siri Intents</span>
           </div>
-          <div class="project-arrow">↗</div>
         </div>
-      </a>
+      </div>
+
+      <div class="project-card featured reveal">
+        <div class="project-tag">🚀 And Many More</div>
+
+        <div class="project-name">More apps. More impact.</div>
+
+        <div class="project-desc">
+          Beyond the featured projects above, I’ve contributed to and shipped multiple production iOS applications currently live on the App Store — spanning education, enterprise utilities, security systems, and consumer tools. Many are actively used in real-world environments with ongoing feature iterations and performance optimization.
+        </div>
+
+        <div class="project-footer">
+          <div class="project-tech">
+            <span class="tech-badge">App Store Live</span>
+            <span class="tech-badge">Production Apps</span>
+            <span class="tech-badge">Real Users</span>
+            <span class="tech-badge">Ongoing Iterations</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
