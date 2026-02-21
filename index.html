@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hitesh Suthar — iOS Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Using system fonts like Apple does -->
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: rgba(255,255,255,0.72);
+      --surface-hover: rgba(255,255,255,0.9);
+      --border: rgba(0,0,0,0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #aeaeb2;
+      --accent: #0071e3;
+      --accent-light: #e8f0fe;
+      --accent-hover: #0077ed;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --radius-xs: 8px;
+      --blur: blur(20px) saturate(180%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 52px;
+      background: rgba(245,245,247,0.8);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: -0.1px;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.75; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,113,227,0.12) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: var(--blur);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34c759;
+      box-shadow: 0 0 0 2px rgba(52,199,89,0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 700;
+      letter-spacing: -2.5px;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent) 0%, #00a3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: var(--text-secondary);
+      font-weight: 400;
+      letter-spacing: -0.3px;
+      max-width: 560px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: scale(1.02);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.2px;
+      backdrop-filter: var(--blur);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      transform: scale(1.02);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: fadeUp 0.6s 0.5s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--text-tertiary), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    .scroll-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 540px;
+      letter-spacing: -0.2px;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: var(--blur);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .about-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-card.wide { grid-column: span 2; }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-xs);
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--text-primary);
+      max-width: 100%;
+      padding: 100px 24px;
+    }
+
+    .skills-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    #skills .section-eyebrow { color: rgba(255,255,255,0.5); }
+    #skills .section-title { color: #fff; }
+    #skills .section-desc { color: rgba(255,255,255,0.55); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .skill-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      transition: background 0.2s, transform 0.15s;
+      cursor: default;
+    }
+
+    .skill-pill:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      backdrop-filter: var(--blur);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(0,113,227,0.06) 0%, rgba(0,163,255,0.04) 100%);
+      border-color: rgba(0,113,227,0.15);
+    }
+
+    .project-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .project-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      color: var(--text-primary);
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tech-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(0,0,0,0.04);
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    .project-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .contact-card {
+      max-width: 600px;
+      margin: 48px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: var(--blur);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-link:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-xs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-link-arrow {
+      margin-left: auto;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-heart {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .about-grid, .projects-grid { grid-template-columns: 1fr; }
+      .about-card.wide, .project-card.featured { grid-column: span 1; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+      .contact-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Hitesh Suthar</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="https://drive.google.com/file/d/1sirKyPhMDzJcMl35bcuO0kwWbVVE6YXo/view" target="_blank">Resume ↗</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Available for opportunities
+    </div>
+    <h1>Crafting <span>iOS</span><br/>experiences.</h1>
+    <p class="hero-sub">iOS Developer with 2+ years building intuitive, native apps with Swift, SwiftUI & UIKit — where simplicity meets precision.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-secondary" href="#contact">Get in Touch</a>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-eyebrow reveal">About</p>
+    <h2 class="section-title reveal">Passionate about<br/>native simplicity.</h2>
+    <p class="section-desc reveal">I believe the best apps feel invisible — they just work, beautifully. I focus on performance, accessibility, and craft in every line of Swift I write.</p>
+
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Currently at</div>
+        <div class="card-body">Blue Berry Fun Private Limited — building consumer-facing iOS products with SwiftUI and UIKit on a fast-paced product team.</div>
+      </div>
+      <div class="about-card reveal">
+        <div class="card-icon">⏱️</div>
+        <div class="card-title">Experience</div>
+        <div class="card-body">2+ years of hands-on iOS development, from concept to App Store. Experienced in MVVM architecture, async/await, and Combine.</div>
+      </div>
+      <div class="about-card wide reveal">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">What I believe</div>
+        <div class="card-body">Great iOS apps aren't just functional — they're delightful. I care deeply about the small details: animation curves, haptic feedback, gesture feel, and layout precision. Apple's Human Interface Guidelines aren't a constraint, they're a canvas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="skills-inner">
+      <p class="section-eyebrow reveal">Skills</p>
+      <h2 class="section-title reveal">The full stack<br/>of iOS craft.</h2>
+      <p class="section-desc reveal">From UI to persistence to networking — built with Apple-native tools the whole way down.</p>
+
+      <div class="skills-grid">
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#F05138"></span> Swift</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#00BFFF"></span> SwiftUI</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#0A84FF"></span> UIKit</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#FF9F0A"></span> Xcode</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#30D158"></span> Combine</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#BF5AF2"></span> CoreData</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#FF3B30"></span> MVVM</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#64D2FF"></span> REST APIs</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#FFD60A"></span> Git & GitHub</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#FF6961"></span> Firebase</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#30D158"></span> Async/Await</div>
+        <div class="skill-pill reveal"><span class="skill-dot" style="background:#0A84FF"></span> App Store Connect</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-eyebrow reveal">Projects</p>
+    <h2 class="section-title reveal">Things I've built.</h2>
+    <p class="section-desc reveal">A selection of projects that showcase my range — from UI clones to original ideas.</p>
+
+    <div class="projects-grid">
+      <a class="project-card featured reveal" href="https://github.com/hiteshsuthar1410/NetflixClone" target="_blank">
+        <div class="project-tag">⭐ Featured</div>
+        <div class="project-name">Netflix Clone</div>
+        <div class="project-desc">A fully native iOS Netflix clone built to mirror the real app experience — browsing, categories, video player, and smooth transitions. A deep dive into UIKit layout and API integration.</div>
+        <div class="project-footer">
+          <div class="project-tech">
+            <span class="tech-badge">Swift</span>
+            <span class="tech-badge">UIKit</span>
+            <span class="tech-badge">TMDB API</span>
+            <span class="tech-badge">AVKit</span>
+          </div>
+          <div class="project-arrow">↗</div>
+        </div>
+      </a>
+
+      <div class="project-card reveal">
+        <div class="project-tag">🔨 In Progress</div>
+        <div class="project-name">More coming soon</div>
+        <div class="project-desc">Currently building new projects. Check back soon or follow me on GitHub for updates.</div>
+        <div class="project-footer">
+          <div class="project-tech">
+            <span class="tech-badge">SwiftUI</span>
+            <span class="tech-badge">Combine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-tag">💡 Open to collaborate</div>
+        <div class="project-name">Let's build together</div>
+        <div class="project-desc">Have an iOS idea you want to bring to life? I'm open to freelance collaborations and interesting open-source projects.</div>
+        <div class="project-footer">
+          <div class="project-tech">
+            <span class="tech-badge">iOS</span>
+            <span class="tech-badge">Swift</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="max-width:100%">
+    <p class="section-eyebrow reveal">Contact</p>
+    <h2 class="section-title reveal">Let's connect.</h2>
+    <p class="section-desc reveal" style="margin:0 auto">Open to new opportunities, collaborations, and conversations about iOS development.</p>
+
+    <div class="contact-card reveal">
+      <p style="font-size:15px;color:var(--text-secondary);line-height:1.6">I'm currently open to new roles and freelance projects. Feel free to reach out through any of the channels below.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://www.linkedin.com/in/hiteshsuthar1410/" target="_blank">
+          <span class="contact-link-icon" style="background:#e8f0fe;">💼</span>
+          LinkedIn — hiteshsuthar1410
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a class="contact-link" href="https://github.com/hiteshsuthar1410" target="_blank">
+          <span class="contact-link-icon" style="background:#f0f0f0;">🐙</span>
+          GitHub — hiteshsuthar1410
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a class="contact-link" href="https://drive.google.com/file/d/1sirKyPhMDzJcMl35bcuO0kwWbVVE6YXo/view" target="_blank">
+          <span class="contact-link-icon" style="background:#fef0e8;">📄</span>
+          Resume — View / Download
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Hitesh Suthar</span>
+      <span class="footer-heart">Built with Swift spirit 🍎</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
